@@ -69,6 +69,7 @@
 #include "constant.h"
 #include "envrnmnt.h"
 #include "memalloc.h"
+#include "multifld.h"
 #include "router.h"
 #include "setup.h"
 #include "symbol.h"

@@ -31,6 +31,10 @@
 
 #define _H_sortfun
 
+#ifndef _H_evaluatn
+#include "evaluatn.h"
+#endif
+
 #ifdef LOCALE
 #undef LOCALE
 #endif

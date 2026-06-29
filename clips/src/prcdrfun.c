@@ -129,7 +129,7 @@ static void DeallocateProceduralFunctionData(void* theEnv) {
 /*   for the while function.           */
 /***************************************/
 globle void WhileFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   struct garbageFrame newGarbageFrame;
   struct garbageFrame* oldGarbageFrame;
 
@@ -197,7 +197,7 @@ globle void WhileFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the loop-for-count function.       */
 /********************************************/
 globle void LoopForCountFunction(void* theEnv, DATA_OBJECT_PTR loopResult) {
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
   long long iterationEnd;
   LOOP_COUNTER_STACK* tmpCounter;
   struct garbageFrame newGarbageFrame;
@@ -603,7 +603,8 @@ globle void BreakFunction(void* theEnv) {
 /* SwitchFunction: H/L access routine for the switch function.   */
 /*****************************************************************/
 globle void SwitchFunction(void* theEnv, DATA_OBJECT_PTR result) {
-  DATA_OBJECT switch_val, case_val;
+  DATA_OBJECT switch_val = DATA_OBJECT_INIT;
+  DATA_OBJECT case_val = DATA_OBJECT_INIT;
   EXPRESSION* theExp;
 
   result->type = SYMBOL;

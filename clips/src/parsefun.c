@@ -100,7 +100,7 @@ globle void ParseFunctionDefinitions(void* theEnv) {
 /*   for the check-syntax function.        */
 /*******************************************/
 globle void CheckSyntaxFunction(void* theEnv, DATA_OBJECT* returnValue) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   /*===============================*/
   /* Set up a default return value */

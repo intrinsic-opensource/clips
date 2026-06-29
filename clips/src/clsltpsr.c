@@ -761,7 +761,7 @@ static intBool CheckForFacetConflicts(
  ********************************************************************/
 static intBool EvaluateSlotDefaultValue(void* theEnv, SLOT_DESC* sd,
                                         const char* specbits) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   int oldce, olddcc, vCode;
 
   /* ===================================================================

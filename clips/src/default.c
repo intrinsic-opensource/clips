@@ -261,7 +261,7 @@ globle struct expr* ParseDefault(void* theEnv, const char* readSource,
   struct expr *defaultList = NULL, *lastDefault = NULL;
   struct expr *newItem, *tmpItem;
   struct token theToken;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   CONSTRAINT_RECORD* rv;
   int specialVarCode;
 

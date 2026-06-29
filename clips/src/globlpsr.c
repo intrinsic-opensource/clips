@@ -201,7 +201,7 @@ static intBool GetVariableDefinition(void* theEnv, const char* readSource,
                                      struct token* theToken) {
   SYMBOL_HN* variableName;
   struct expr* assignPtr;
-  DATA_OBJECT assignValue;
+  DATA_OBJECT assignValue = DATA_OBJECT_INIT;
 
   /*========================================*/
   /* Get next token, which should either be */

@@ -203,7 +203,7 @@ static void DuplicateModifyCommand(void* theEnv, int retractIt,
   long long factNum;
   struct fact *oldFact, *newFact, *theFact;
   struct expr* testPtr;
-  DATA_OBJECT computeResult;
+  DATA_OBJECT computeResult = DATA_OBJECT_INIT;
   struct deftemplate* templatePtr;
   struct templateSlot* slotPtr;
   int i, position, found;
@@ -746,7 +746,7 @@ globle intBool EnvDeftemplateSlotDefaultValue(void* theEnv,
   short position;
   struct deftemplate* theDeftemplate = (struct deftemplate*)vTheDeftemplate;
   struct templateSlot* theSlot;
-  DATA_OBJECT tempDO;
+  DATA_OBJECT tempDO = DATA_OBJECT_INIT;
 
   /*=============================================*/
   /* Set up the default return value for errors. */
@@ -1492,7 +1492,7 @@ globle int EnvDeftemplateSlotExistP(void* theEnv, void* vTheDeftemplate,
 globle int DeftemplateSlotFacetExistPFunction(void* theEnv) {
   struct deftemplate* theDeftemplate;
   SYMBOL_HN* slotName;
-  DATA_OBJECT facetName;
+  DATA_OBJECT facetName = DATA_OBJECT_INIT;
 
   /*===================================================*/
   /* Retrieve the deftemplate and slot name arguments. */
@@ -1580,7 +1580,7 @@ globle void DeftemplateSlotFacetValueFunction(void* theEnv,
                                               DATA_OBJECT* returnValue) {
   struct deftemplate* theDeftemplate;
   SYMBOL_HN* slotName;
-  DATA_OBJECT facetName;
+  DATA_OBJECT facetName = DATA_OBJECT_INIT;
 
   /*=============================================*/
   /* Set up the default return value for errors. */
@@ -1676,7 +1676,7 @@ globle int EnvDeftemplateSlotFacetValue(void* theEnv, void* vTheDeftemplate,
 static SYMBOL_HN* CheckDeftemplateAndSlotArguments(
     void* theEnv, const char* functionName, struct deftemplate** theDeftemplate,
     int expectedArgs) {
-  DATA_OBJECT tempDO;
+  DATA_OBJECT tempDO = DATA_OBJECT_INIT;
   const char* deftemplateName;
 
   /*============================================*/

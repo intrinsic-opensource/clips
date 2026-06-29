@@ -552,7 +552,7 @@ globle void Dependents(void* theEnv, struct patternEntity* theEntity) {
 /*   for the dependencies command.           */
 /*********************************************/
 globle void DependenciesCommand(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   void* ptr;
 
   if (EnvArgCountCheck(theEnv, "dependencies", EXACTLY, 1) == -1) return;
@@ -573,7 +573,7 @@ globle void DependenciesCommand(void* theEnv) {
 /*   for the dependents command.           */
 /*******************************************/
 globle void DependentsCommand(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   void* ptr;
 
   if (EnvArgCountCheck(theEnv, "dependents", EXACTLY, 1) == -1) return;

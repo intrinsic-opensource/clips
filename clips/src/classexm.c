@@ -127,7 +127,7 @@ globle void BrowseClassesCommand(void* theEnv) {
        ================================================ */
     cls = LookupDefclassByMdlOrScope(theEnv, OBJECT_TYPE_NAME);
   else {
-    DATA_OBJECT tmp;
+    DATA_OBJECT tmp = DATA_OBJECT_INIT;
 
     if (EnvArgTypeCheck(theEnv, "browse-classes", 1, SYMBOL, &tmp) == FALSE)
       return;
@@ -408,7 +408,7 @@ globle int SlotExistPCommand(void* theEnv) {
   DEFCLASS* cls;
   SLOT_DESC* sd;
   int inheritFlag = FALSE;
-  DATA_OBJECT dobj;
+  DATA_OBJECT dobj = DATA_OBJECT_INIT;
 
   sd = CheckSlotExists(theEnv, "slot-existp", &cls, FALSE, TRUE);
   if (sd == NULL) return (FALSE);
@@ -456,7 +456,7 @@ globle intBool EnvSlotExistP(void* theEnv, void* theDefclass,
 globle int MessageHandlerExistPCommand(void* theEnv) {
   DEFCLASS* cls;
   SYMBOL_HN* mname;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   unsigned mtype = MPRIMARY;
 
   if (EnvArgTypeCheck(theEnv, "message-handler-existp", 1, SYMBOL, &temp) ==
@@ -742,7 +742,7 @@ globle intBool EnvSlotDefaultValue(void* theEnv, void* theDefclass,
   NOTES        : H/L Syntax : (class-existp <arg>)
  ********************************************************/
 globle intBool ClassExistPCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, "class-existp", 1, SYMBOL, &temp) == FALSE)
     return (FALSE);
@@ -770,7 +770,7 @@ globle intBool ClassExistPCommand(void* theEnv) {
  ******************************************************/
 static int CheckTwoClasses(void* theEnv, const char* func, DEFCLASS** c1,
                            DEFCLASS** c2) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, func, 1, SYMBOL, &temp) == FALSE) return (FALSE);
   *c1 = LookupDefclassByMdlOrScope(theEnv, DOToString(temp));
@@ -895,7 +895,7 @@ static DEFCLASS* CheckClass(void* theEnv, const char* func, const char* cname) {
   NOTES        : Assumes only 1 argument
  *********************************************************/
 static const char* GetClassNameArgument(void* theEnv, const char* fname) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, fname, 1, SYMBOL, &temp) == FALSE) return (NULL);
   return (DOToString(temp));

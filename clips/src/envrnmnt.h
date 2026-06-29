@@ -44,6 +44,9 @@
 #ifndef _H_envrnmnt
 #define _H_envrnmnt
 
+#ifndef _H_setup
+#include "setup.h"
+#endif
 #ifndef _H_symbol
 #include "symbol.h"
 #endif

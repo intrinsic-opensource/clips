@@ -529,7 +529,7 @@ globle intBool EnvSetIncrementalReset(void* theEnv, int value) {
 /****************************************************/
 globle int SetIncrementalResetCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   struct defmodule* theModule;
 
   oldValue = EnvGetIncrementalReset(theEnv);

@@ -163,7 +163,7 @@ globle void FactCommandDefinitions(void* theEnv) {
 globle void AssertCommand(void* theEnv, DATA_OBJECT_PTR rv) {
   struct deftemplate* theDeftemplate;
   struct field* theField;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   struct expr* theExpression;
   struct templateSlot* slotPtr;
   struct fact* newFact;
@@ -289,7 +289,7 @@ globle void RetractCommand(void* theEnv) {
   long long factIndex;
   struct fact* ptr;
   struct expr* theArgument;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   int argNumber;
 
   /*================================*/
@@ -382,7 +382,7 @@ globle void RetractCommand(void* theEnv) {
 /***************************************************/
 globle int SetFactDuplicationCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   /*=====================================================*/
   /* Get the old value of the fact duplication behavior. */
@@ -455,7 +455,7 @@ globle int GetFactDuplicationCommand(void* theEnv) {
 /*   for the fact-index function.          */
 /*******************************************/
 globle long long FactIndexFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   /*============================================*/
   /* Check for the correct number of arguments. */
@@ -502,7 +502,7 @@ globle void FactsCommand(void* theEnv) {
   int argumentCount;
   long long start = UNSPECIFIED, end = UNSPECIFIED, max = UNSPECIFIED;
   struct defmodule* theModule;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   int argOffset;
 
   /*=========================================================*/
@@ -718,7 +718,7 @@ globle void EnvFacts(void* theEnv, const char* logicalName, void* vTheModule,
 static long long GetFactsArgument(void* theEnv, int whichOne,
                                   int argumentCount) {
   long long factIndex;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   if (whichOne > argumentCount) return (UNSPECIFIED);
 
@@ -744,7 +744,7 @@ static long long GetFactsArgument(void* theEnv, int whichOne,
 /*   for the assert-string function.          */
 /**********************************************/
 globle void AssertStringFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   struct fact* theFact;
 
   /*===================================================*/
@@ -786,7 +786,7 @@ globle int SaveFactsCommand(void* theEnv) {
   const char* fileName;
   int numArgs, saveCode = LOCAL_SAVE;
   const char* argument;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   struct expr* theList = NULL;
 
   /*============================================*/
@@ -1143,7 +1143,7 @@ globle intBool EnvLoadFacts(void* theEnv, const char* fileName) {
   FILE* filePtr;
   struct token theToken;
   struct expr* testPtr;
-  DATA_OBJECT rv;
+  DATA_OBJECT rv = DATA_OBJECT_INIT;
   int danglingConstructs;
   struct garbageFrame newGarbageFrame, *oldGarbageFrame;
 
@@ -1223,7 +1223,7 @@ globle intBool EnvLoadFactsFromString(void* theEnv, const char* theString,
   const char* theStrRouter = "*** load-facts-from-string ***";
   struct token theToken;
   struct expr* testPtr;
-  DATA_OBJECT rv;
+  DATA_OBJECT rv = DATA_OBJECT_INIT;
 
   /*==========================*/
   /* Initialize string router */

@@ -136,7 +136,7 @@ static void ResetDeffactsAction(void* theEnv,
 #if MAC_XCD
 #pragma unused(buffer)
 #endif
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct deffacts* theDeffacts = (struct deffacts*)theConstruct;
 
   if (theDeffacts->assertList == NULL) return;

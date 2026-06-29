@@ -725,7 +725,7 @@ globle void GetConstructListFunction(void* theEnv, const char* functionName,
                                      DATA_OBJECT_PTR returnValue,
                                      struct construct* constructClass) {
   struct defmodule* theModule;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   int numArgs;
 
   /*============================================*/
@@ -977,7 +977,7 @@ globle void GetConstructList(void* theEnv, DATA_OBJECT_PTR returnValue,
 globle void ListConstructCommand(void* theEnv, const char* functionName,
                                  struct construct* constructClass) {
   struct defmodule* theModule;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   int numArgs;
 
   /*============================================*/
@@ -1427,7 +1427,7 @@ static unsigned ConstructWatchSupport(
     void (*setWatchFunc)(void*, unsigned, void*)) {
   struct defmodule* theModule;
   void* theConstruct;
-  DATA_OBJECT constructName;
+  DATA_OBJECT constructName = DATA_OBJECT_INIT;
   int argIndex = 2;
 
   /*========================================*/

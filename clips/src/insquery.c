@@ -175,7 +175,7 @@ globle void* GetQueryInstance(void* theEnv) {
 globle void GetQueryInstanceSlot(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
   INSTANCE_SLOT* sp;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   QUERY_CORE* core;
   const char* varSlot;
 
@@ -723,7 +723,7 @@ static QUERY_CLASS* DetermineQueryClasses(void* theEnv, EXPRESSION* classExp,
                                           const char* func, unsigned* rcnt) {
   QUERY_CLASS *clist = NULL, *cnxt = NULL, *cchain = NULL, *tmp;
   int new_list = FALSE;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   *rcnt = 0;
   while (classExp != NULL) {
@@ -930,7 +930,7 @@ static int TestForFirstInstanceInClass(void* theEnv,
                                        unsigned indx) {
   long i;
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct garbageFrame newGarbageFrame;
   struct garbageFrame* oldGarbageFrame;
   unsigned j;
@@ -1051,7 +1051,7 @@ static void TestEntireClass(void* theEnv, struct defmodule* theModule, int id,
                             DEFCLASS* cls, QUERY_CLASS* qchain, unsigned indx) {
   long i;
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct garbageFrame newGarbageFrame;
   struct garbageFrame* oldGarbageFrame;
   unsigned j;

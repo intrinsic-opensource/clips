@@ -202,7 +202,7 @@ globle void CreateFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*****************************************************************/
 globle long long SetgenFunction(void* theEnv) {
   long long theLong;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   /*==========================================================*/
   /* Check to see that a single integer argument is provided. */
@@ -313,7 +313,7 @@ globle void* GensymStar(void* theEnv) {
 globle long long RandomFunction(void* theEnv) {
   int argCount;
   long long rv;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   long long begin, end;
 
   /*====================================*/
@@ -361,7 +361,7 @@ globle long long RandomFunction(void* theEnv) {
 /*   the seed function.                   */
 /******************************************/
 globle void SeedFunction(void* theEnv) {
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   /*==========================================================*/
   /* Check to see that a single integer argument is provided. */
@@ -382,7 +382,7 @@ globle void SeedFunction(void* theEnv) {
 /*   the length$ function.                  */
 /********************************************/
 globle long long LengthFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   /*====================================================*/
   /* The length$ function expects exactly one argument. */
@@ -444,7 +444,7 @@ globle long long ReleaseMemCommand(void* theEnv) {
 /******************************************/
 globle void ConserveMemCommand(void* theEnv) {
   const char* argument;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   /*===================================*/
   /* The conserve-mem function expects */
@@ -539,7 +539,7 @@ globle long long MemRequestsCommand(void* theEnv) {
 /****************************************/
 globle void AproposCommand(void* theEnv) {
   const char* argument;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   struct symbolHashNode* hashPtr = NULL;
   size_t theLength;
 
@@ -1039,7 +1039,7 @@ globle void* CauseEvaluationError(void* theEnv) {
  ****************************************************************/
 globle intBool SetSORCommand(void* theEnv) {
 #if (!RUN_TIME) && (!BLOAD_ONLY)
-  DATA_OBJECT arg;
+  DATA_OBJECT arg = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, "set-sequence-operator-recognition", 1, SYMBOL,
                       &arg) == FALSE)
@@ -1060,7 +1060,7 @@ globle intBool SetSORCommand(void* theEnv) {
   NOTES        : None
  ********************************************************************/
 globle void* GetFunctionRestrictions(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct FunctionDefinition* fptr;
 
   if (EnvArgTypeCheck(theEnv, "get-function-restrictions", 1, SYMBOL, &temp) ==
@@ -1115,7 +1115,7 @@ globle void GetFunctionListFunction(void* theEnv, DATA_OBJECT* returnValue) {
 /***************************************/
 globle void FuncallFunction(void* theEnv, DATA_OBJECT* returnValue) {
   int argCount, i, j;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   FUNCTION_REFERENCE theReference;
   const char* name;
   struct multifield* theMultifield;
@@ -1267,7 +1267,7 @@ globle void FuncallFunction(void* theEnv, DATA_OBJECT* returnValue) {
 /***********************************/
 globle void NewFunction(void* theEnv, DATA_OBJECT* returnValue) {
   int theType;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   const char* name;
 
   /*==================================*/
@@ -1323,7 +1323,7 @@ globle void NewFunction(void* theEnv, DATA_OBJECT* returnValue) {
 /************************************/
 globle void CallFunction(void* theEnv, DATA_OBJECT* returnValue) {
   int theType;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   const char* name;
   int argumentCount;
   struct externalAddressHashNode* theEA;
@@ -1564,7 +1564,7 @@ void GMTimeFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 globle double TimerFunction(void* theEnv) {
   int numa, i;
   double startTime;
-  DATA_OBJECT returnValue;
+  DATA_OBJECT returnValue = DATA_OBJECT_INIT;
 
   startTime = gentime();
 

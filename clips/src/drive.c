@@ -574,7 +574,7 @@ globle void NetworkAssertLeft(void* theEnv, struct partialMatch* lhsBinds,
 /*******************************************************/
 globle intBool EvaluateJoinExpression(void* theEnv, struct expr* joinExpr,
                                       struct joinNode* joinPtr) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   int andLogic, result = TRUE;
 
   /*======================================*/
@@ -747,7 +747,7 @@ globle unsigned long BetaMemoryHashValue(void* theEnv, struct expr* hashExpr,
                                          struct partialMatch* lbinds,
                                          struct partialMatch* rbinds,
                                          struct joinNode* joinPtr) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   struct partialMatch* oldLHSBinds;
   struct partialMatch* oldRHSBinds;
   struct joinNode* oldJoin;

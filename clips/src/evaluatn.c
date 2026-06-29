@@ -1137,7 +1137,11 @@ static void PrintCAddress(void* theEnv, const char* logicalName,
 
   EnvPrintRouter(theEnv, logicalName, "<Pointer-C-");
 
-  gensprintf(buffer, "%p", ValueToExternalAddress(theValue));
+  if (ValueToExternalAddress(theValue) != NULL) {
+    gensprintf(buffer, "%p", ValueToExternalAddress(theValue));
+  } else {
+    strcpy(buffer, "0x0");
+  }
   EnvPrintRouter(theEnv, logicalName, buffer);
   EnvPrintRouter(theEnv, logicalName, ">");
 }

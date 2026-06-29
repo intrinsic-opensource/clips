@@ -1030,7 +1030,7 @@ globle void EnvRefreshAgenda(void* theEnv, void* vTheModule) {
 /*   Syntax: (set-salience-evaluation-behavior <symbol>) */
 /*********************************************************/
 globle void* SetSalienceEvaluationCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   const char* oldValue;
 
@@ -1150,7 +1150,7 @@ globle intBool EnvSetSalienceEvaluation(void* theEnv, int value) {
 /*****************************************************************/
 static int EvaluateSalience(void* theEnv, void* vPtr) {
   struct defrule* rPtr = (struct defrule*)vPtr;
-  DATA_OBJECT salienceValue;
+  DATA_OBJECT salienceValue = DATA_OBJECT_INIT;
   int salience;
 
   /*==================================================*/

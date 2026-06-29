@@ -108,7 +108,8 @@ globle void PredicateFunctionDefinitions(void* theEnv) {
 /*   for the eq function.           */
 /************************************/
 globle intBool EqFunction(void* theEnv) {
-  DATA_OBJECT item, nextItem;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
+  DATA_OBJECT nextItem = DATA_OBJECT_INIT;
   int numArgs, i;
   struct expr* theExpression;
 
@@ -164,7 +165,8 @@ globle intBool EqFunction(void* theEnv) {
 /*   for the neq function.           */
 /*************************************/
 globle intBool NeqFunction(void* theEnv) {
-  DATA_OBJECT item, nextItem;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
+  DATA_OBJECT nextItem = DATA_OBJECT_INIT;
   int numArgs, i;
   struct expr* theExpression;
 
@@ -215,7 +217,7 @@ globle intBool NeqFunction(void* theEnv) {
 /*   for the stringp function.           */
 /*****************************************/
 globle intBool StringpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "stringp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -233,7 +235,7 @@ globle intBool StringpFunction(void* theEnv) {
 /*   for the symbolp function.           */
 /*****************************************/
 globle intBool SymbolpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "symbolp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -251,7 +253,7 @@ globle intBool SymbolpFunction(void* theEnv) {
 /*   for the lexemep function.           */
 /*****************************************/
 globle intBool LexemepFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "lexemep", EXACTLY, 1) == -1) return (FALSE);
 
@@ -269,7 +271,7 @@ globle intBool LexemepFunction(void* theEnv) {
 /*   for the numberp function.           */
 /*****************************************/
 globle intBool NumberpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "numberp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -287,7 +289,7 @@ globle intBool NumberpFunction(void* theEnv) {
 /*   for the floatp function.           */
 /****************************************/
 globle intBool FloatpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "floatp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -305,7 +307,7 @@ globle intBool FloatpFunction(void* theEnv) {
 /*   for the integerp function.           */
 /******************************************/
 globle intBool IntegerpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "integerp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -321,7 +323,7 @@ globle intBool IntegerpFunction(void* theEnv) {
 /*   for the multifieldp function.           */
 /*********************************************/
 globle intBool MultifieldpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "multifieldp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -337,7 +339,7 @@ globle intBool MultifieldpFunction(void* theEnv) {
 /*   for the pointerp function.           */
 /******************************************/
 globle intBool PointerpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "pointerp", EXACTLY, 1) == -1) return (FALSE);
 
@@ -354,7 +356,7 @@ globle intBool PointerpFunction(void* theEnv) {
 /*************************************/
 globle intBool NotFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   theArgument = GetFirstArgument();
   if (theArgument == NULL) {
@@ -376,7 +378,7 @@ globle intBool NotFunction(void* theEnv) {
 /*************************************/
 globle intBool AndFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   for (theArgument = GetFirstArgument(); theArgument != NULL;
        theArgument = GetNextArgument(theArgument)) {
@@ -395,7 +397,7 @@ globle intBool AndFunction(void* theEnv) {
 /************************************/
 globle intBool OrFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   for (theArgument = GetFirstArgument(); theArgument != NULL;
        theArgument = GetNextArgument(theArgument)) {
@@ -415,7 +417,8 @@ globle intBool OrFunction(void* theEnv) {
 /*****************************************/
 globle intBool LessThanOrEqualFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -479,7 +482,8 @@ globle intBool LessThanOrEqualFunction(void* theEnv) {
 /********************************************/
 globle intBool GreaterThanOrEqualFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -543,7 +547,8 @@ globle intBool GreaterThanOrEqualFunction(void* theEnv) {
 /**********************************/
 globle intBool LessThanFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -608,7 +613,8 @@ globle intBool LessThanFunction(void* theEnv) {
 /*************************************/
 globle intBool GreaterThanFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -673,7 +679,8 @@ globle intBool GreaterThanFunction(void* theEnv) {
 /**************************************/
 globle intBool NumericEqualFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -735,7 +742,8 @@ globle intBool NumericEqualFunction(void* theEnv) {
 /*****************************************/
 globle intBool NumericNotEqualFunction(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT rv1, rv2;
+  DATA_OBJECT rv1 = DATA_OBJECT_INIT;
+  DATA_OBJECT rv2 = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=========================*/
@@ -795,7 +803,7 @@ globle intBool NumericNotEqualFunction(void* theEnv) {
 /*   for the oddp function.           */
 /**************************************/
 globle intBool OddpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   long long num, halfnum;
 
   if (EnvArgCountCheck(theEnv, "oddp", EXACTLY, 1) == -1) return (FALSE);
@@ -815,7 +823,7 @@ globle intBool OddpFunction(void* theEnv) {
 /*   for the evenp function.           */
 /***************************************/
 globle intBool EvenpFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   long long num, halfnum;
 
   if (EnvArgCountCheck(theEnv, "evenp", EXACTLY, 1) == -1) return (FALSE);

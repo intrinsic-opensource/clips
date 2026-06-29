@@ -287,7 +287,7 @@ globle void SetupObjectPatternStuff(void* theEnv) {
 
 static void ResetInitialObject(void* theEnv) {
   EXPRESSION* tmp;
-  DATA_OBJECT rtn;
+  DATA_OBJECT rtn = DATA_OBJECT_INIT;
 
   tmp =
       GenConstant(theEnv, FCALL, (void*)FindFunction(theEnv, "make-instance"));

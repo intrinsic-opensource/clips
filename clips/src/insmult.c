@@ -142,7 +142,9 @@ globle void SetupInstanceMultifieldCommands(void* theEnv) {
                                  <range-begin> <range-end> <value>)
  ***********************************************************************************/
 globle void MVSlotReplaceCommand(void* theEnv, DATA_OBJECT* result) {
-  DATA_OBJECT newval, newseg, oldseg;
+  DATA_OBJECT newval = DATA_OBJECT_INIT;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
   INSTANCE_TYPE* ins;
   INSTANCE_SLOT* sp;
   long rb, re;
@@ -179,7 +181,9 @@ globle void MVSlotReplaceCommand(void* theEnv, DATA_OBJECT* result) {
   NOTES        : H/L Syntax : (slot-insert$ <instance> <slot> <index> <value>)
  ***********************************************************************************/
 globle void MVSlotInsertCommand(void* theEnv, DATA_OBJECT* result) {
-  DATA_OBJECT newval, newseg, oldseg;
+  DATA_OBJECT newval = DATA_OBJECT_INIT;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
   INSTANCE_TYPE* ins;
   INSTANCE_SLOT* sp;
   long theIndex;
@@ -217,7 +221,8 @@ globle void MVSlotInsertCommand(void* theEnv, DATA_OBJECT* result) {
                                  <range-begin> <range-end>)
  ***********************************************************************************/
 globle void MVSlotDeleteCommand(void* theEnv, DATA_OBJECT* result) {
-  DATA_OBJECT newseg, oldseg;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
   INSTANCE_TYPE* ins;
   INSTANCE_SLOT* sp;
   long rb, re;
@@ -254,7 +259,9 @@ globle intBool DirectMVReplaceCommand(void* theEnv) {
   INSTANCE_SLOT* sp;
   INSTANCE_TYPE* ins;
   long rb, re;
-  DATA_OBJECT newval, newseg, oldseg;
+  DATA_OBJECT newval = DATA_OBJECT_INIT;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
 
   if (CheckCurrentMessage(theEnv, "direct-slot-replace$", TRUE) == FALSE)
     return (FALSE);
@@ -284,7 +291,9 @@ globle intBool DirectMVInsertCommand(void* theEnv) {
   INSTANCE_SLOT* sp;
   INSTANCE_TYPE* ins;
   long theIndex;
-  DATA_OBJECT newval, newseg, oldseg;
+  DATA_OBJECT newval = DATA_OBJECT_INIT;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
 
   if (CheckCurrentMessage(theEnv, "direct-slot-insert$", TRUE) == FALSE)
     return (FALSE);
@@ -315,7 +324,8 @@ globle intBool DirectMVDeleteCommand(void* theEnv) {
   INSTANCE_SLOT* sp;
   INSTANCE_TYPE* ins;
   long rb, re;
-  DATA_OBJECT newseg, oldseg;
+  DATA_OBJECT newseg = DATA_OBJECT_INIT;
+  DATA_OBJECT oldseg = DATA_OBJECT_INIT;
 
   if (CheckCurrentMessage(theEnv, "direct-slot-delete$", TRUE) == FALSE)
     return (FALSE);
@@ -351,7 +361,7 @@ globle intBool DirectMVDeleteCommand(void* theEnv) {
 static INSTANCE_TYPE* CheckMultifieldSlotInstance(void* theEnv,
                                                   const char* func) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, func, 1, INSTANCE_OR_INSTANCE_NAME, &temp) ==
       FALSE) {
@@ -405,7 +415,7 @@ static INSTANCE_SLOT* CheckMultifieldSlotModify(void* theEnv, int code,
                                                 INSTANCE_TYPE* ins,
                                                 EXPRESSION* args, long* rb,
                                                 long* re, DATA_OBJECT* newval) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   INSTANCE_SLOT* sp;
   int start;
 

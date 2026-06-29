@@ -890,7 +890,7 @@ static void ResetDefinstancesAction(void* theEnv,
 #endif
   DEFINSTANCES* theDefinstances = (DEFINSTANCES*)vDefinstances;
   EXPRESSION* theExp;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   SaveCurrentModule(theEnv);
   EnvSetCurrentModule(theEnv, (void*)vDefinstances->whichModule->theModule);

@@ -344,7 +344,7 @@ static void DeclarationParse(void* theEnv, const char* readSource,
 static void ParseSalience(void* theEnv, const char* readSource,
                           const char* ruleName, int* error) {
   int salience;
-  DATA_OBJECT salienceValue;
+  DATA_OBJECT salienceValue = DATA_OBJECT_INIT;
 
   /*==============================*/
   /* Get the salience expression. */

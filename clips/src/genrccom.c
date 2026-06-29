@@ -597,7 +597,7 @@ globle void* GetDefgenericModuleCommand(void* theEnv) {
   NOTES        : H/L Syntax: (undefmethod <name> <index> | *)
  **************************************************************/
 globle void UndefmethodCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFGENERIC* gfunc;
   long mi;
 
@@ -877,7 +877,7 @@ globle void PPDefgenericCommand(void* theEnv) {
   NOTES        : H/L Syntax: (ppdefmethod <name> <index>)
  **********************************************************/
 globle void PPDefmethodCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   const char* gname;
   DEFGENERIC* gfunc;
   int gi;
@@ -904,7 +904,7 @@ globle void PPDefmethodCommand(void* theEnv) {
   NOTES        : H/L Syntax: (list-defmethods <name>)
  ******************************************************/
 globle void ListDefmethodsCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFGENERIC* gfunc;
 
   if (EnvRtnArgCount(theEnv) == 0)
@@ -1041,7 +1041,7 @@ globle void EnvGetDefgenericList(void* theEnv, DATA_OBJECT* returnValue,
   NOTES        : None
  ***********************************************************/
 globle void GetDefmethodListCommand(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFGENERIC* gfunc;
 
   if (EnvRtnArgCount(theEnv) == 0)
@@ -1121,7 +1121,7 @@ globle void EnvGetDefmethodList(void* theEnv, void* vgfunc,
  <method-index>)
  ***********************************************************************************/
 globle void GetMethodRestrictionsCommand(void* theEnv, DATA_OBJECT* result) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFGENERIC* gfunc;
 
   if (EnvArgTypeCheck(theEnv, "get-method-restrictions", 1, SYMBOL, &temp) ==
@@ -1585,7 +1585,8 @@ static unsigned DefmethodWatchSupport(
   void* theGeneric;
   unsigned long theMethod = 0;
   int argIndex = 2;
-  DATA_OBJECT genericName, methodIndex;
+  DATA_OBJECT genericName = DATA_OBJECT_INIT;
+  DATA_OBJECT methodIndex = DATA_OBJECT_INIT;
   struct defmodule* theModule;
 
   /* ==============================

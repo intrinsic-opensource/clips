@@ -1314,7 +1314,7 @@ unsigned long ComputeRightHashValue(void* theEnv,
 
   for (tempExpr = theHeader->rightHash; tempExpr != NULL;
        tempExpr = tempExpr->nextArg, multiplier = multiplier * 509) {
-    DATA_OBJECT theResult;
+    DATA_OBJECT theResult = DATA_OBJECT_INIT;
     struct expr* oldArgument;
 
     oldArgument = EvaluationData(theEnv)->CurrentExpression;

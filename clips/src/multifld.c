@@ -365,7 +365,7 @@ globle void PrintMultifield(void* theEnv, const char* fileid,
 /****************************************************/
 globle void StoreInMultifield(void* theEnv, DATA_OBJECT* returnValue,
                               EXPRESSION* expptr, int garbageSegment) {
-  DATA_OBJECT val_ptr;
+  DATA_OBJECT val_ptr = DATA_OBJECT_INIT;
   DATA_OBJECT* val_arr;
   struct multifield* theMultifield;
   struct multifield* orig_ptr;
@@ -644,7 +644,7 @@ globle void* ImplodeMultifield(void* theEnv, DATA_OBJECT* value) {
   char* ret_str;
   void* rv;
   struct multifield* theMultifield;
-  DATA_OBJECT tempDO;
+  DATA_OBJECT tempDO = DATA_OBJECT_INIT;
 
   /*===================================================*/
   /* Determine the size of the string to be allocated. */

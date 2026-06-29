@@ -176,7 +176,7 @@ globle void GetQueryFact(void* theEnv, DATA_OBJECT* result) {
  **************************************************************************/
 globle void GetQueryFactSlot(void* theEnv, DATA_OBJECT* result) {
   struct fact* theFact;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   QUERY_CORE* core;
   short position;
   const char* varSlot;
@@ -740,7 +740,7 @@ static QUERY_TEMPLATE* DetermineQueryTemplates(void* theEnv,
                                                unsigned* rcnt) {
   QUERY_TEMPLATE *clist = NULL, *cnxt = NULL, *cchain = NULL, *tmp;
   int new_list = FALSE;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   *rcnt = 0;
   while (templateExp != NULL) {
@@ -935,7 +935,7 @@ static int TestForFirstFactInTemplate(void* theEnv,
                                       struct deftemplate* templatePtr,
                                       QUERY_TEMPLATE* qchain, unsigned indx) {
   struct fact* theFact;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct garbageFrame newGarbageFrame;
   struct garbageFrame* oldGarbageFrame;
   unsigned j;
@@ -1047,7 +1047,7 @@ static void TestEntireChain(void* theEnv, QUERY_TEMPLATE* qchain,
 static void TestEntireTemplate(void* theEnv, struct deftemplate* templatePtr,
                                QUERY_TEMPLATE* qchain, unsigned indx) {
   struct fact* theFact;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct garbageFrame newGarbageFrame;
   struct garbageFrame* oldGarbageFrame;
   unsigned j;

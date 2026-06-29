@@ -506,7 +506,7 @@ static void InstallConstraintRecord(void* theEnv,
 /**********************************************/
 globle int SDCCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
 
   oldValue = EnvGetDynamicConstraintChecking(theEnv);
 
@@ -549,7 +549,7 @@ globle int GDCCommand(void* theEnv) {
 /*********************************************/
 globle int SSCCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
 
   oldValue = EnvGetStaticConstraintChecking(theEnv);
 

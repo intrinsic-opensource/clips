@@ -193,7 +193,9 @@ globle void MultifieldFunctionDefinitions(void* theEnv) {
 /*   for the delete$ function.          */
 /****************************************/
 globle void DeleteFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value1, value2, value3;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
+  DATA_OBJECT value3 = DATA_OBJECT_INIT;
 
   /*=======================================*/
   /* Check for the correct argument types. */
@@ -225,7 +227,8 @@ globle void DeleteFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the mv-delete function.          */
 /******************************************/
 globle void MVDeleteFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value1, value2;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
 
   /*=======================================*/
   /* Check for the correct argument types. */
@@ -256,7 +259,10 @@ globle void MVDeleteFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the replace$ function.          */
 /*****************************************/
 globle void ReplaceFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value1, value2, value3, value4;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
+  DATA_OBJECT value3 = DATA_OBJECT_INIT;
+  DATA_OBJECT value4 = DATA_OBJECT_INIT;
   EXPRESSION* fieldarg;
 
   /*=======================================*/
@@ -300,7 +306,9 @@ globle void ReplaceFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the mv-replace function.          */
 /*******************************************/
 globle void MVReplaceFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value1, value2, value3;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
+  DATA_OBJECT value3 = DATA_OBJECT_INIT;
 
   /*=======================================*/
   /* Check for the correct argument types. */
@@ -338,7 +346,9 @@ globle void MVReplaceFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the delete-member$ function.         */
 /**********************************************/
 globle void DeleteMemberFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT resultValue, *delVals, tmpVal;
+  DATA_OBJECT resultValue = DATA_OBJECT_INIT;
+  DATA_OBJECT* delVals;
+  DATA_OBJECT tmpVal = DATA_OBJECT_INIT;
   int i, argCnt;
   unsigned delSize;
   long j, k;
@@ -398,7 +408,10 @@ globle void DeleteMemberFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the replace-member$ function.         */
 /***********************************************/
 globle void ReplaceMemberFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT resultValue, replVal, *delVals, tmpVal;
+  DATA_OBJECT resultValue = DATA_OBJECT_INIT;
+  DATA_OBJECT replVal = DATA_OBJECT_INIT;
+  DATA_OBJECT* delVals;
+  DATA_OBJECT tmpVal = DATA_OBJECT_INIT;
   int i, argCnt;
   unsigned delSize;
   long j, k, mink[2], *minkp;
@@ -470,7 +483,9 @@ globle void ReplaceMemberFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the insert$ function.          */
 /****************************************/
 globle void InsertFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value1, value2, value3;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
+  DATA_OBJECT value3 = DATA_OBJECT_INIT;
   EXPRESSION* fieldarg;
 
   /*=======================================*/
@@ -511,7 +526,7 @@ globle void InsertFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the explode$ function.          */
 /*****************************************/
 globle void ExplodeFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT value;
+  DATA_OBJECT value = DATA_OBJECT_INIT;
   struct multifield* theMultifield;
   unsigned long end;
 
@@ -565,7 +580,7 @@ globle void ExplodeFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the implode$ function.          */
 /*****************************************/
 globle void* ImplodeFunction(void* theEnv) {
-  DATA_OBJECT value;
+  DATA_OBJECT value = DATA_OBJECT_INIT;
 
   /*=====================================*/
   /* Implode$ expects a single argument. */
@@ -595,7 +610,7 @@ globle void* ImplodeFunction(void* theEnv) {
 /*   for the subseq$ function.          */
 /****************************************/
 globle void SubseqFunction(void* theEnv, DATA_OBJECT_PTR sub_value) {
-  DATA_OBJECT value;
+  DATA_OBJECT value = DATA_OBJECT_INIT;
   struct multifield* theList;
   long long offset, start, end, length; /* 6.04 Bug Fix */
 
@@ -659,7 +674,7 @@ globle void SubseqFunction(void* theEnv, DATA_OBJECT_PTR sub_value) {
 /*   for the mv-subseq function.          */
 /******************************************/
 globle void MVSubseqFunction(void* theEnv, DATA_OBJECT_PTR sub_value) {
-  DATA_OBJECT value;
+  DATA_OBJECT value = DATA_OBJECT_INIT;
   struct multifield* theList;
   long long offset, start, end, length; /* 6.04 Bug Fix */
 
@@ -723,7 +738,7 @@ globle void MVSubseqFunction(void* theEnv, DATA_OBJECT_PTR sub_value) {
 /*   for the first$ function.          */
 /***************************************/
 globle void FirstFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   struct multifield* theList;
 
   /*===================================*/
@@ -756,7 +771,7 @@ globle void FirstFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the rest$ function.          */
 /**************************************/
 globle void RestFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   struct multifield* theList;
 
   /*===================================*/
@@ -789,7 +804,8 @@ globle void RestFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the nth$ function.          */
 /*************************************/
 globle void NthFunction(void* theEnv, DATA_OBJECT_PTR nth_value) {
-  DATA_OBJECT value1, value2;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
   struct multifield* elm_ptr;
   long long n; /* 6.04 Bug Fix */
 
@@ -838,7 +854,9 @@ globle void NthFunction(void* theEnv, DATA_OBJECT_PTR nth_value) {
  */
 
 globle intBool SubsetpFunction(void* theEnv) {
-  DATA_OBJECT item1, item2, tmpItem;
+  DATA_OBJECT item1 = DATA_OBJECT_INIT;
+  DATA_OBJECT item2 = DATA_OBJECT_INIT;
+  DATA_OBJECT tmpItem = DATA_OBJECT_INIT;
   long i, j, k;
 
   if (EnvArgCountCheck(theEnv, "subsetp", EXACTLY, 2) == -1) return (FALSE);
@@ -869,7 +887,8 @@ globle intBool SubsetpFunction(void* theEnv) {
 /*   for the member$ function.          */
 /****************************************/
 globle void MemberFunction(void* theEnv, DATA_OBJECT_PTR result) {
-  DATA_OBJECT item1, item2;
+  DATA_OBJECT item1 = DATA_OBJECT_INIT;
+  DATA_OBJECT item2 = DATA_OBJECT_INIT;
   long j, k;
 
   result->type = SYMBOL;
@@ -1210,7 +1229,7 @@ globle void ForeachFunction(void* theEnv, DATA_OBJECT_PTR result) {
 static void MultifieldPrognDriver(void* theEnv, DATA_OBJECT_PTR result,
                                   const char* functionName) {
   EXPRESSION* theExp;
-  DATA_OBJECT argval;
+  DATA_OBJECT argval = DATA_OBJECT_INIT;
   long i, end; /* 6.04 Bug Fix */
   FIELD_VAR_STACK* tmpField;
   struct garbageFrame newGarbageFrame;

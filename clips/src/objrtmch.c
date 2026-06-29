@@ -838,7 +838,7 @@ static void ProcessPatternNode(void* theEnv, int offset,
   int repeatCount;
   INSTANCE_SLOT* objectSlot;
   struct multifieldMarker* newMark;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   OBJECT_PATTERN_NODE* tempPtr;
 
   patternSlotField = patternNode->whichField;
@@ -1110,7 +1110,7 @@ static void CreateObjectAlphaMatch(void* theEnv, OBJECT_ALPHA_NODE* alphaPtr) {
 static intBool EvaluateObjectPatternTest(
     void* theEnv, int objectSlotField, struct multifieldMarker* selfSlotMarker,
     EXPRESSION* networkTest, OBJECT_PATTERN_NODE* patternNode) {
-  DATA_OBJECT vresult;
+  DATA_OBJECT vresult = DATA_OBJECT_INIT;
   int rv;
 
   if (networkTest == NULL) return (TRUE);

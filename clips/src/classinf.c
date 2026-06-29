@@ -96,7 +96,7 @@ static SLOT_DESC* SlotInfoSlot(void*, DATA_OBJECT*, DEFCLASS*, const char*,
   NOTES        : Syntax: (class-abstractp <class>)
  *********************************************************************/
 globle int ClassAbstractPCommand(void* theEnv) {
-  DATA_OBJECT tmp;
+  DATA_OBJECT tmp = DATA_OBJECT_INIT;
   DEFCLASS* cls;
 
   if (EnvArgTypeCheck(theEnv, "class-abstractp", 1, SYMBOL, &tmp) == FALSE)
@@ -122,7 +122,7 @@ globle int ClassAbstractPCommand(void* theEnv) {
   NOTES        : Syntax: (class-reactivep <class>)
  *****************************************************************/
 globle int ClassReactivePCommand(void* theEnv) {
-  DATA_OBJECT tmp;
+  DATA_OBJECT tmp = DATA_OBJECT_INIT;
   DEFCLASS* cls;
 
   if (EnvArgTypeCheck(theEnv, "class-reactivep", 1, SYMBOL, &tmp) == FALSE)
@@ -153,7 +153,7 @@ globle int ClassReactivePCommand(void* theEnv) {
  ***********************************************************/
 globle void* ClassInfoFnxArgs(void* theEnv, const char* fnx, int* inhp) {
   void* clsptr;
-  DATA_OBJECT tmp;
+  DATA_OBJECT tmp = DATA_OBJECT_INIT;
 
   *inhp = 0;
   if (EnvRtnArgCount(theEnv) == 0) {

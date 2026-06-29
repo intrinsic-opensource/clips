@@ -115,7 +115,7 @@ static void EarlySlotBindError(void*, INSTANCE_TYPE*, DEFCLASS*, unsigned);
 globle intBool DirectMessage(void* theEnv, SYMBOL_HN* msg, INSTANCE_TYPE* ins,
                              DATA_OBJECT* resultbuf, EXPRESSION* remargs) {
   EXPRESSION args;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (resultbuf == NULL) resultbuf = &temp;
   args.nextArg = remargs;
@@ -206,7 +206,7 @@ globle void DestroyHandlerLinks(void* theEnv, HANDLER_LINK* mhead) {
 globle void SendCommand(void* theEnv, DATA_OBJECT* result) {
   EXPRESSION args;
   SYMBOL_HN* msg;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   result->type = SYMBOL;
   result->value = EnvFalseSymbol(theEnv);
@@ -682,7 +682,7 @@ globle intBool HandlerSlotPutFunction(void* theEnv, void* theValue,
   INSTANCE_TYPE* theInstance;
   INSTANCE_SLOT* sp;
   unsigned instanceSlotIndex;
-  DATA_OBJECT theSetVal;
+  DATA_OBJECT theSetVal = DATA_OBJECT_INIT;
 
   theReference = (HANDLER_SLOT_REFERENCE*)ValueToBitMap(theValue);
   theInstance =
@@ -766,7 +766,7 @@ HandlerPutError2:
 globle void DynamicHandlerGetSlot(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_SLOT* sp;
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   result->type = SYMBOL;
   result->value = EnvFalseSymbol(theEnv);
@@ -811,7 +811,7 @@ globle void DynamicHandlerGetSlot(void* theEnv, DATA_OBJECT* result) {
 globle void DynamicHandlerPutSlot(void* theEnv, DATA_OBJECT* theResult) {
   INSTANCE_SLOT* sp;
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   theResult->type = SYMBOL;
   theResult->value = EnvFalseSymbol(theEnv);
@@ -1139,7 +1139,7 @@ static HANDLER_LINK* FindApplicableHandlers(void* theEnv, DEFCLASS* cls,
  ***************************************************************/
 static void CallHandlers(void* theEnv, DATA_OBJECT* result) {
   HANDLER_LINK *oldCurrent = NULL, *oldNext = NULL; /* prevents warning */
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 #if PROFILING_FUNCTIONS
   struct profileFrameInfo profileFrame;
 #endif

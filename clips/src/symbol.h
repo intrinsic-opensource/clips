@@ -75,10 +75,6 @@
 
 #include <stdlib.h>
 
-#ifndef _H_multifld
-#include "multifld.h"
-#endif
-
 #ifndef SYMBOL_HASH_SIZE
 #define SYMBOL_HASH_SIZE 63559L
 #endif
@@ -321,6 +317,8 @@ LOCALE void RestoreAtomicValueBuckets(void*);
 LOCALE void* EnvFalseSymbol(void*);
 LOCALE void* EnvTrueSymbol(void*);
 LOCALE void EphemerateValue(void*, int, void*);
+
+struct multifield;
 LOCALE void EphemerateMultifield(void*, struct multifield*);
 
 #if ALLOW_ENVIRONMENT_GLOBALS

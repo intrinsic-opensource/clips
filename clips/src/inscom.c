@@ -434,7 +434,7 @@ globle void InstancesCommand(void* theEnv) {
   int argno, inheritFlag = FALSE;
   void* theDefmodule;
   const char* className = NULL;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   theDefmodule = (void*)EnvGetCurrentModule(theEnv);
 
@@ -579,7 +579,7 @@ globle void* EnvMakeInstance(void* theEnv, const char* mkstr) {
   const char* router = "***MKINS***";
   struct token tkn;
   EXPRESSION* top;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   const char* oldRouter;
   const char* oldString;
   long oldIndex;
@@ -754,7 +754,7 @@ globle void EnvDirectGetSlot(void* theEnv, void* ins, const char* sname,
 globle int EnvDirectPutSlot(void* theEnv, void* ins, const char* sname,
                             DATA_OBJECT* val) {
   INSTANCE_SLOT* sp;
-  DATA_OBJECT junk;
+  DATA_OBJECT junk = DATA_OBJECT_INIT;
 
   if ((((INSTANCE_TYPE*)ins)->garbage == 1) || (val == NULL)) {
     SetEvaluationError(theEnv, TRUE);
@@ -968,7 +968,7 @@ globle void EnvGetInstancePPForm(void* theEnv, char* buf, size_t buflen,
 globle void ClassCommand(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
   const char* func;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   func = ValueToString(((struct FunctionDefinition*)EvaluationData(theEnv)
                             ->CurrentExpression->value)
@@ -1060,7 +1060,7 @@ globle intBool DeleteInstanceCommand(void* theEnv) {
  ********************************************************************/
 globle intBool UnmakeInstanceCommand(void* theEnv) {
   EXPRESSION* theArgument;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   INSTANCE_TYPE* ins;
   int argNumber = 1, rtn = TRUE;
 
@@ -1123,7 +1123,7 @@ globle void SymbolToInstanceName(void* theEnv, DATA_OBJECT* result) {
   NOTES        : H/L Syntax : (instance-name-to-symbol <iname>)
  *****************************************************************/
 globle void* InstanceNameToSymbol(void* theEnv) {
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, "instance-name-to-symbol", 1, INSTANCE_NAME,
                       &result) == FALSE)
@@ -1141,7 +1141,7 @@ globle void* InstanceNameToSymbol(void* theEnv) {
  *********************************************************************************/
 globle void InstanceAddressCommand(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   struct defmodule* theModule;
   unsigned searchImports;
 
@@ -1204,7 +1204,7 @@ globle void InstanceAddressCommand(void* theEnv, DATA_OBJECT* result) {
  ***************************************************************/
 globle void InstanceNameCommand(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   result->type = SYMBOL;
   result->value = EnvFalseSymbol(theEnv);
@@ -1238,7 +1238,7 @@ globle void InstanceNameCommand(void* theEnv, DATA_OBJECT* result) {
   NOTES        : H/L Syntax : (instance-addressp <arg>)
  **************************************************************/
 globle intBool InstanceAddressPCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluateExpression(theEnv, GetFirstArgument(), &temp);
   return ((GetType(temp) == INSTANCE_ADDRESS) ? TRUE : FALSE);
@@ -1253,7 +1253,7 @@ globle intBool InstanceAddressPCommand(void* theEnv) {
   NOTES        : H/L Syntax : (instance-namep <arg>)
  **************************************************************/
 globle intBool InstanceNamePCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluateExpression(theEnv, GetFirstArgument(), &temp);
   return ((GetType(temp) == INSTANCE_NAME) ? TRUE : FALSE);
@@ -1270,7 +1270,7 @@ globle intBool InstanceNamePCommand(void* theEnv) {
   NOTES        : H/L Syntax : (instancep <arg>)
  *****************************************************************/
 globle intBool InstancePCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluateExpression(theEnv, GetFirstArgument(), &temp);
   if ((GetType(temp) == INSTANCE_NAME) || (GetType(temp) == INSTANCE_ADDRESS))
@@ -1287,7 +1287,7 @@ globle intBool InstancePCommand(void* theEnv) {
   NOTES        : H/L Syntax : (instance-existp <arg>)
  ********************************************************/
 globle intBool InstanceExistPCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluateExpression(theEnv, GetFirstArgument(), &temp);
   if (temp.type == INSTANCE_ADDRESS)

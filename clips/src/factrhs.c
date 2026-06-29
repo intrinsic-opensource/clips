@@ -447,6 +447,17 @@ globle struct expr* GetAssertArgument(void* theEnv, const char* logicalName,
   /* matching.                                                   */
   /*=============================================================*/
 
+  if (theToken->type == SYMBOL) {
+    // Check whether this is an external address
+    char type;
+    void* ptr;
+    if (sscanf(ValueToString(theToken->value), "<Pointer-%c-%p>", &type,
+               &ptr) == 2) {
+      // This is, indeed, an external address
+      return (GenConstant(theEnv, EXTERNAL_ADDRESS,
+                          EnvAddExternalAddress(theEnv, ptr, 0)));
+    }
+  }
   if ((theToken->type == SYMBOL)
           ? (strcmp(ValueToString(theToken->value), "=") == 0)
           : (theToken->type == LPAREN)) {
@@ -526,7 +537,7 @@ globle struct fact* StringToFact(void* theEnv, const char* str) {
   unsigned numberOfFields = 0, whichField;
   struct expr *assertArgs, *tempPtr;
   int error = FALSE;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
 
   /*=========================================*/
   /* Open a string router and parse the fact */

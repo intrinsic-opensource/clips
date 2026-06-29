@@ -654,7 +654,7 @@ globle void* GetCurrentModuleCommand(void* theEnv) {
 /*   for the set-current-module command.         */
 /*************************************************/
 globle void* SetCurrentModuleCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   struct defmodule* theModule;
   SYMBOL_HN* defaultReturn;

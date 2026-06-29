@@ -71,6 +71,7 @@ struct dataObject {
 
 typedef struct dataObject DATA_OBJECT;
 typedef struct dataObject* DATA_OBJECT_PTR;
+static const DATA_OBJECT DATA_OBJECT_INIT = {NULL, 0, NULL, 0, 0, NULL};
 
 typedef struct expr FUNCTION_REFERENCE;
 

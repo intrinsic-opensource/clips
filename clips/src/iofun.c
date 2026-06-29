@@ -184,7 +184,7 @@ globle void IOFunctionDefinitions(void* theEnv) {
 globle void PrintoutFunction(void* theEnv) {
   const char* dummyid;
   int i, argCount;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
 
   /*=======================================================*/
   /* The printout function requires at least one argument. */
@@ -449,7 +449,7 @@ static void ReadTokenFromStdin(void* theEnv, struct token* theToken) {
 globle int OpenFunction(void* theEnv) {
   int numberOfArguments;
   const char *fileName, *logicalName, *accessMode = NULL;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
 
   /*========================================*/
   /* Check for a valid number of arguments. */
@@ -614,7 +614,7 @@ globle int GetCharFunction(void* theEnv) {
 globle void PutCharFunction(void* theEnv) {
   int numberOfArguments;
   const char* logicalName;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   long long theChar;
   FILE* theFile;
 
@@ -839,7 +839,7 @@ globle void* FormatFunction(void* theEnv) {
 /*   control string to see if there are enough matching arguments.   */
 /*********************************************************************/
 static const char* ControlStringCheck(void* theEnv, int argCount) {
-  DATA_OBJECT t_ptr;
+  DATA_OBJECT t_ptr = DATA_OBJECT_INIT;
   const char* str_array;
   char print_buff[FLAG_MAX];
   size_t i;
@@ -976,7 +976,7 @@ static char FindFormatFlag(const char* formatString, size_t* a,
 /**********************************************************************/
 static const char* PrintFormatFlag(void* theEnv, const char* formatString,
                                    int whichArg, int formatType) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   const char* theString;
   char* printBuffer;
   size_t theLength;
@@ -1183,7 +1183,7 @@ static char* FillBuffer(void* theEnv, const char* logicalName,
 /*   for the set-locale function.        */
 /*****************************************/
 globle void SetLocaleFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   int numArgs;
 
   /*======================================*/

@@ -49,6 +49,12 @@
 struct field;
 struct multifield;
 
+#ifndef _H_setup
+#include "setup.h"
+#endif
+#ifndef _H_expressn
+#include "expressn.h"
+#endif
 #ifndef _H_evaluatn
 #include "evaluatn.h"
 #endif

@@ -198,7 +198,7 @@ globle int EnvFactExistp(void* theEnv, void* vTheFact) {
 /***********************************************/
 globle void FactSlotValueFunction(void* theEnv, DATA_OBJECT* returnValue) {
   struct fact* theFact;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   /*=============================================*/
   /* Set up the default return value for errors. */
@@ -377,7 +377,7 @@ globle void EnvFactSlotNames(void* theEnv, void* vTheFact,
 /*********************************************/
 globle void GetFactListFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   struct defmodule* theModule;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   int numArgs;
 
   /*===========================================*/
@@ -504,7 +504,7 @@ globle void PPFactFunction(void* theEnv) {
   int numberOfArguments;
   const char* logicalName = NULL; /* Avoids warning */
   int ignoreDefaults = FALSE;
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   if ((numberOfArguments = EnvArgRangeCheck(theEnv, "ppfact", 1, 3)) == -1)
     return;
@@ -585,7 +585,7 @@ globle struct fact* GetFactAddressOrIndexArgument(void* theEnv,
                                                   const char* theFunction,
                                                   int position,
                                                   int noFactError) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   long long factIndex;
   struct fact* theFact;
   char tempBuffer[20];

@@ -85,7 +85,7 @@ globle void FactPatternMatch(void* theEnv, struct fact* theFact,
                              struct multifieldMarker* endMark) {
   int theSlotField;
   int offsetSlot;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   struct factPatternNode* tempPtr;
 
   /*=========================================================*/
@@ -289,7 +289,7 @@ static void ProcessMultifieldNode(void* theEnv,
   struct multifieldMarker *newMark, *oldMark;
   int repeatCount;
   struct multifield* theSlotValue;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   struct factPatternNode* tempPtr;
   intBool success;
 
@@ -576,7 +576,7 @@ static void ProcessFactAlphaMatch(void* theEnv, struct fact* theFact,
 static int EvaluatePatternExpression(void* theEnv,
                                      struct factPatternNode* patternPtr,
                                      struct expr* theTest) {
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
   struct expr* oldArgument;
   int rv;
 

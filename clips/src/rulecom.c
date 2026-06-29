@@ -230,7 +230,7 @@ globle intBool EnvSetBetaMemoryResizing(void* theEnv, int value) {
 /****************************************************/
 globle int SetBetaMemoryResizingCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
 
   oldValue = EnvGetBetaMemoryResizing(theEnv);
 
@@ -288,7 +288,7 @@ globle void MatchesCommand(void* theEnv, DATA_OBJECT* result) {
   const char *ruleName, *argument;
   void* rulePtr;
   int numberOfArguments;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   int output;
 
   result->type = SYMBOL;
@@ -957,7 +957,7 @@ globle void JoinActivityCommand(void* theEnv, DATA_OBJECT* result) {
   const char *ruleName, *argument;
   void* rulePtr;
   int numberOfArguments;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   int output;
 
   result->type = SYMBOL;
@@ -1253,7 +1253,7 @@ globle void JoinActivityResetCommand(void* theEnv) {
 /*   for the timetag function.         */
 /***************************************/
 globle long long TimetagFunction(void* theEnv) {
-  DATA_OBJECT item;
+  DATA_OBJECT item = DATA_OBJECT_INIT;
   void* ptr;
 
   if (EnvArgCountCheck(theEnv, "timetag", EXACTLY, 1) == -1) return (-1LL);

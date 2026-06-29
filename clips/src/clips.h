@@ -32,38 +32,28 @@
 #include <stdio.h>
 #endif
 
-#include "setup.h"
-#ifndef _H_argacces
+// IWYU pragma: begin_exports
 #include "argacces.h"
-#endif
+#include "bmathfun.h"
 #include "commline.h"
 #include "constant.h"
+#include "constrct.h"
 #include "cstrcpsr.h"
 #include "envrnmnt.h"
+#include "evaluatn.h"
+#include "expressn.h"
+#include "exprnpsr.h"
 #include "filecom.h"
-#include "memalloc.h"
-#include "strngfun.h"
-#ifndef _H_symbol
-#include "symbol.h"
-#endif
-
-#include "bmathfun.h"
 #include "filertr.h"
 #include "iofun.h"
-#include "router.h"
-#include "strngrtr.h"
-#include "sysdep.h"
-#ifndef _H_expressn
-#include "expressn.h"
-#endif
-#include "exprnpsr.h"
-#ifndef _H_evaluatn
-#include "evaluatn.h"
-#endif
-#ifndef _H_constrct
-#include "constrct.h"
-#endif
+#include "memalloc.h"
 #include "modulbsc.h"
+#include "router.h"
+#include "setup.h"
+#include "strngfun.h"
+#include "strngrtr.h"
+#include "symbol.h"
+#include "sysdep.h"
 #include "utility.h"
 #include "watch.h"
 
@@ -76,15 +66,13 @@
 #endif
 
 #if DEFRULE_CONSTRUCT
-#ifndef _H_ruledef
-#include "ruledef.h"
-#endif
 #include "crstrtgy.h"
 #include "drive.h"
 #include "engine.h"
 #include "incrrset.h"
 #include "rulebsc.h"
 #include "rulecom.h"
+#include "ruledef.h"
 #endif
 
 #if DEFFACTS_CONSTRUCT
@@ -95,13 +83,11 @@
 #if DEFTEMPLATE_CONSTRUCT
 #include "factcom.h"
 #include "factfun.h"
+#include "facthsh.h"
+#include "factmngr.h"
 #include "tmpltbsc.h"
 #include "tmpltdef.h"
 #include "tmpltfun.h"
-#ifndef _H_factmngr
-#include "factmngr.h"
-#endif
-#include "facthsh.h"
 #endif
 
 #if DEFGLOBAL_CONSTRUCT
@@ -133,5 +119,7 @@
 #include "msgpass.h"
 #include "objrtmch.h"
 #endif
+
+// IWYU pragma: end_exports
 
 #endif

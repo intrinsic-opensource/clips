@@ -482,7 +482,7 @@ globle void UndefmessageHandlerCommand(void* theEnv) {
 #else
   SYMBOL_HN* mname;
   const char* tname;
-  DATA_OBJECT tmp;
+  DATA_OBJECT tmp = DATA_OBJECT_INIT;
   DEFCLASS* cls;
 
 #if BLOAD || BLOAD_AND_BSAVE
@@ -571,7 +571,7 @@ globle int EnvUndefmessageHandler(void* theEnv, void* vptr, int mhi) {
   NOTES        : H/L Syntax: (ppdefmessage-handler <class> <message> [<type>])
  *******************************************************************************/
 globle void PPDefmessageHandlerCommand(void* theEnv) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   SYMBOL_HN *csym, *msym;
   const char* tname;
   DEFCLASS* cls = NULL;
@@ -651,7 +651,7 @@ globle void ListDefmessageHandlersCommand(void* theEnv) {
  ********************************************************************/
 globle void PreviewSendCommand(void* theEnv) {
   DEFCLASS* cls;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   /* =============================
      Get the class for the message
@@ -930,7 +930,7 @@ static unsigned DefmessageHandlerWatchSupport(
   const char* theHandlerStr;
   int theType;
   int argIndex = 2;
-  DATA_OBJECT tmpData;
+  DATA_OBJECT tmpData = DATA_OBJECT_INIT;
 
   /* ===============================
      If no handlers are specified,

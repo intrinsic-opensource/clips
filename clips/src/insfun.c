@@ -534,7 +534,7 @@ globle int DirectPutSlotValue(void* theEnv, INSTANCE_TYPE* ins,
   int sharedTraversalID;
   INSTANCE_SLOT *bsp, **spaddr;
 #endif
-  DATA_OBJECT tmpVal;
+  DATA_OBJECT tmpVal = DATA_OBJECT_INIT;
 
   SetpType(setVal, SYMBOL);
   SetpValue(setVal, EnvFalseSymbol(theEnv));
@@ -766,7 +766,7 @@ globle int ValidSlotValue(void* theEnv, DATA_OBJECT* val, SLOT_DESC* sd,
  ********************************************************/
 globle INSTANCE_TYPE* CheckInstance(void* theEnv, const char* func) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluateExpression(theEnv, GetFirstArgument(), &temp);
   if (temp.type == INSTANCE_ADDRESS) {

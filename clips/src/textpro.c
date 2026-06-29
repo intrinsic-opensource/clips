@@ -913,7 +913,7 @@ static FILE* FindTopicInEntries(void*, const char*, struct topics*, char**,
 /***************************************************************************/
 globle void FetchCommand(void* theEnv, DATA_OBJECT* result) {
   int load_ct; /*Number of entries loaded */
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
 
   result->type = SYMBOL;
   result->value = EnvFalseSymbol(theEnv);
@@ -1059,7 +1059,7 @@ globle void* GetRegionCommand(void* theEnv) {
 /***************************************************************************/
 globle int TossCommand(void* theEnv) {
   const char* file; /*Name of the file */
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, "toss", 1, SYMBOL_OR_STRING, &arg_ptr) == FALSE)
     return (FALSE);
@@ -1090,7 +1090,7 @@ static struct topics* GetCommandLineTopics(void* theEnv) {
   struct topics *head, /*Address of the top of the topic list   */
       *tnode,          /*Address of new topic node              */
       *tptr;           /*Used to attach new node to the list    */
-  DATA_OBJECT val;     /*Unknown-type H/L data structure        */
+  DATA_OBJECT val = DATA_OBJECT_INIT; /*Unknown-type H/L data structure */
 
   head = NULL;
   topic_num = EnvRtnArgCount(theEnv);

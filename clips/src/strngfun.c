@@ -148,7 +148,7 @@ globle void SymCatFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /********************************************************/
 static void StrOrSymCatFunction(void* theEnv, DATA_OBJECT_PTR returnValue,
                                 unsigned short returnType) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
   int numArgs, i, total, j;
   char* theString;
   SYMBOL_HN** arrayOfStrings;
@@ -275,7 +275,7 @@ static void StrOrSymCatFunction(void* theEnv, DATA_OBJECT_PTR returnValue,
 /*   for the str-length function.          */
 /*******************************************/
 globle long long StrLengthFunction(void* theEnv) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   /*===================================================*/
   /* Function str-length expects exactly one argument. */
@@ -306,7 +306,7 @@ globle long long StrLengthFunction(void* theEnv) {
 /*   for the upcase function.           */
 /****************************************/
 globle void UpcaseFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
   unsigned i;
   size_t slen;
   const char* osptr;
@@ -366,7 +366,7 @@ globle void UpcaseFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the lowcase function.           */
 /*****************************************/
 globle void LowcaseFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
   unsigned i;
   size_t slen;
   const char* osptr;
@@ -427,7 +427,9 @@ globle void LowcaseFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /********************************************/
 globle long long StrCompareFunction(void* theEnv) {
   int numArgs, length;
-  DATA_OBJECT arg1, arg2, arg3;
+  DATA_OBJECT arg1 = DATA_OBJECT_INIT;
+  DATA_OBJECT arg2 = DATA_OBJECT_INIT;
+  DATA_OBJECT arg3 = DATA_OBJECT_INIT;
   long long returnValue;
 
   /*=======================================================*/
@@ -486,7 +488,7 @@ globle long long StrCompareFunction(void* theEnv) {
 /*   for the sub-string function.          */
 /*******************************************/
 globle void* SubStringFunction(void* theEnv) {
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   const char* tempString;
   char* returnString;
   size_t start, end, i, j, length;
@@ -582,7 +584,8 @@ globle void* SubStringFunction(void* theEnv) {
 /*   for the sub-index function.          */
 /******************************************/
 globle void StrIndexFunction(void* theEnv, DATA_OBJECT_PTR result) {
-  DATA_OBJECT theArgument1, theArgument2;
+  DATA_OBJECT theArgument1 = DATA_OBJECT_INIT;
+  DATA_OBJECT theArgument2 = DATA_OBJECT_INIT;
   const char *strg1, *strg2, *strg3;
   size_t i, j;
 
@@ -640,7 +643,7 @@ globle void StrIndexFunction(void* theEnv, DATA_OBJECT_PTR result) {
 /*   for the string-to-field function.       */
 /********************************************/
 globle void StringToFieldFunction(void* theEnv, DATA_OBJECT* returnValue) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   /*========================================================*/
   /* Function string-to-field expects exactly one argument. */
@@ -716,7 +719,7 @@ globle void StringToField(void* theEnv, const char* theString,
 /*   for the eval function.           */
 /**************************************/
 globle void EvalFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   /*=============================================*/
   /* Function eval expects exactly one argument. */
@@ -946,7 +949,7 @@ globle int EnvEval(void* theEnv, const char* theString,
 /*   for the build function.           */
 /***************************************/
 globle int BuildFunction(void* theEnv) {
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
 
   /*==============================================*/
   /* Function build expects exactly one argument. */

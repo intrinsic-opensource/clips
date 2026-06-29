@@ -229,7 +229,7 @@ globle long SaveInstancesCommand(void* theEnv) {
  ******************************************************/
 globle long LoadInstancesCommand(void* theEnv) {
   const char* fileFound;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   long instanceCount;
 
   if (EnvArgTypeCheck(theEnv, "load-instances", 1, SYMBOL_OR_STRING, &temp) ==
@@ -291,7 +291,7 @@ globle long EnvLoadInstancesFromString(void* theEnv, const char* theString,
  *********************************************************/
 globle long RestoreInstancesCommand(void* theEnv) {
   const char* fileFound;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   long instanceCount;
 
   if (EnvArgTypeCheck(theEnv, "restore-instances", 1, SYMBOL_OR_STRING,
@@ -355,7 +355,7 @@ globle long EnvRestoreInstancesFromString(void* theEnv, const char* theString,
  *******************************************************/
 globle long BinaryLoadInstancesCommand(void* theEnv) {
   const char* fileFound;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   long instanceCount;
 
   if (EnvArgTypeCheck(theEnv, "bload-instances", 1, SYMBOL_OR_STRING, &temp) ==
@@ -621,7 +621,7 @@ static long InstancesSaveCommandParser(void* theEnv, const char* functionName,
                                                             int, EXPRESSION*,
                                                             intBool)) {
   const char* fileFound;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   int argCount, saveCode = LOCAL_SAVE;
   EXPRESSION* classList = NULL;
   intBool inheritFlag = FALSE;
@@ -691,7 +691,7 @@ static long InstancesSaveCommandParser(void* theEnv, const char* functionName,
 static DATA_OBJECT* ProcessSaveClassList(void* theEnv, const char* functionName,
                                          EXPRESSION* classExps, int saveCode,
                                          intBool inheritFlag) {
-  DATA_OBJECT *head = NULL, *prv, *newItem, tmp;
+  DATA_OBJECT *head = NULL, *prv, *newItem, tmp = DATA_OBJECT_INIT;
   DEFCLASS* theDefclass;
   struct defmodule* currentModule;
   int argIndex = inheritFlag ? 4 : 3;
@@ -1173,7 +1173,7 @@ static void SaveAtomBinary(void* theEnv, unsigned short type, void* value,
  **********************************************************************/
 static long LoadOrRestoreInstances(void* theEnv, const char* file, int usemsgs,
                                    int isFileName) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   FILE *sfile = NULL, *svload = NULL;
   const char* ilog;
   EXPRESSION* top;
@@ -1374,7 +1374,8 @@ static intBool LoadSingleBinaryInstance(void* theEnv) {
   unsigned long totalValueCount;
   long i, j;
   INSTANCE_SLOT* sp;
-  DATA_OBJECT slotValue, junkValue;
+  DATA_OBJECT slotValue = DATA_OBJECT_INIT;
+  DATA_OBJECT junkValue = DATA_OBJECT_INIT;
 
   /* =====================
      Get the instance name

@@ -486,7 +486,7 @@ static void DestroyObjectAlphaNodes(void* theEnv, OBJECT_ALPHA_NODE* theNode) {
 globle intBool ObjectCmpConstantFunction(void* theEnv, void* theValue,
                                          DATA_OBJECT* theResult) {
   struct ObjectCmpPNConstant* hack;
-  DATA_OBJECT theVar;
+  DATA_OBJECT theVar = DATA_OBJECT_INIT;
   EXPRESSION* constantExp;
   int rv;
   SEGMENT* theSegment;

@@ -80,7 +80,7 @@ static void ExpectedTypeError3(void*, const char*, const char*, int,
 /*******************************************************************/
 globle const char* EnvRtnLexeme(void* theEnv, int argumentPosition) {
   int count = 1;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct expr* argPtr;
 
   /*=====================================================*/
@@ -142,7 +142,7 @@ globle const char* EnvRtnLexeme(void* theEnv, int argumentPosition) {
 /*******************************************************************/
 globle double EnvRtnDouble(void* theEnv, int argumentPosition) {
   int count = 1;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct expr* argPtr;
 
   /*=====================================================*/
@@ -202,7 +202,7 @@ globle double EnvRtnDouble(void* theEnv, int argumentPosition) {
 /*****************************************************************/
 globle long long EnvRtnLong(void* theEnv, int argumentPosition) {
   int count = 1;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct expr* argPtr;
 
   /*=====================================================*/
@@ -577,7 +577,7 @@ globle intBool GetNumericArgument(void* theEnv, struct expr* theArgument,
 globle const char* GetLogicalName(void* theEnv, int whichArgument,
                                   const char* defaultLogicalName) {
   const char* logicalName;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   EnvRtnUnknown(theEnv, whichArgument, &result);
 
@@ -608,7 +608,7 @@ globle const char* GetLogicalName(void* theEnv, int whichArgument,
 /************************************************************/
 globle const char* GetFileName(void* theEnv, const char* functionName,
                                int whichArgument) {
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   EnvRtnUnknown(theEnv, whichArgument, &result);
   if ((GetType(result) != STRING) && (GetType(result) != SYMBOL)) {
@@ -641,7 +641,7 @@ globle void OpenErrorMessage(void* theEnv, const char* functionName,
 /************************************************************/
 globle struct defmodule* GetModuleName(void* theEnv, const char* functionName,
                                        int whichArgument, int* error) {
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct defmodule* theModule;
 
   *error = FALSE;
@@ -693,7 +693,7 @@ globle struct defmodule* GetModuleName(void* theEnv, const char* functionName,
 /****************************************************************/
 globle const char* GetConstructName(void* theEnv, const char* functionName,
                                     const char* constructType) {
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   if (EnvRtnArgCount(theEnv) != 1) {
     ExpectedCountError(theEnv, functionName, EXACTLY, 1);

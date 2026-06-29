@@ -152,7 +152,7 @@ globle void DeleteProfileData(void* theEnv, void* theData) {
 /**************************************/
 globle void ProfileCommand(void* theEnv) {
   const char* argument;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "profile", EXACTLY, 1) == -1) return;
   if (EnvArgTypeCheck(theEnv, "profile", 1, SYMBOL, &theValue) == FALSE) return;
@@ -227,7 +227,7 @@ globle intBool Profile(void* theEnv, const char* argument) {
 /******************************************/
 globle void ProfileInfoCommand(void* theEnv) {
   int argCount;
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   char buffer[512];
 
   /*===================================*/
@@ -699,7 +699,7 @@ static void OutputConstructsCodeInfo(void* theEnv) {
 /*   for the set-profile-percent-threshold command.      */
 /*********************************************************/
 globle double SetProfilePercentThresholdCommand(void* theEnv) {
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
   double newThreshold;
 
   if (EnvArgCountCheck(theEnv, "set-profile-percent-threshold", EXACTLY, 1) ==

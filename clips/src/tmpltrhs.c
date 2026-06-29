@@ -436,7 +436,7 @@ static struct expr* GetSlotAssertValues(void* theEnv,
                                         struct expr* firstSlot, int* error) {
   struct expr* slotItem;
   struct expr *newArg, *tempArg;
-  DATA_OBJECT theDefault;
+  DATA_OBJECT theDefault = DATA_OBJECT_INIT;
   const char* nullBitMap = "\0";
 
   /*==================================================*/

@@ -155,7 +155,7 @@ globle void InitializeInstanceCommand(void* theEnv, DATA_OBJECT* result) {
 globle void MakeInstanceCommand(void* theEnv, DATA_OBJECT* result) {
   SYMBOL_HN* iname;
   INSTANCE_TYPE* ins;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFCLASS* cls;
 
   SetpType(result, SYMBOL);
@@ -281,7 +281,7 @@ globle INSTANCE_TYPE* BuildInstance(void* theEnv, SYMBOL_HN* iname,
   unsigned hashTableIndex;
   unsigned modulePosition;
   SYMBOL_HN* moduleName;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
 #if DEFRULE_CONSTRUCT
   if (EngineData(theEnv)->JoinOperationInProgress && cls->reactive) {
@@ -864,7 +864,7 @@ static void BuildDefaultSlots(void* theEnv, intBool initMessage) {
  *******************************************************************/
 static int CoreInitializeInstance(void* theEnv, INSTANCE_TYPE* ins,
                                   EXPRESSION* ovrexp) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (ins->installed == 0) {
     PrintErrorID(theEnv, "INSMNGR", 7, FALSE);
@@ -935,7 +935,8 @@ static int CoreInitializeInstance(void* theEnv, INSTANCE_TYPE* ins,
 static int InsertSlotOverrides(void* theEnv, INSTANCE_TYPE* ins,
                                EXPRESSION* slot_exp) {
   INSTANCE_SLOT* slot;
-  DATA_OBJECT temp, junk;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
+  DATA_OBJECT junk = DATA_OBJECT_INIT;
 
   EvaluationData(theEnv)->EvaluationError = FALSE;
   while (slot_exp != NULL) {
@@ -996,7 +997,8 @@ static int InsertSlotOverrides(void* theEnv, INSTANCE_TYPE* ins,
  *****************************************************************************/
 static void EvaluateClassDefaults(void* theEnv, INSTANCE_TYPE* ins) {
   INSTANCE_SLOT* slot;
-  DATA_OBJECT temp, junk;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
+  DATA_OBJECT junk = DATA_OBJECT_INIT;
   long i;
 
   if (ins->initializeInProgress == 0) {

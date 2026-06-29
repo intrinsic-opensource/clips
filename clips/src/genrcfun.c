@@ -535,7 +535,7 @@ globle void PreviewGeneric(void* theEnv) {
   DEFGENERIC* gfunc;
   DEFGENERIC* previousGeneric;
   int oldce;
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   EvaluationData(theEnv)->EvaluationError = FALSE;
   if (EnvArgTypeCheck(theEnv, "preview-generic", 1, SYMBOL, &temp) == FALSE)

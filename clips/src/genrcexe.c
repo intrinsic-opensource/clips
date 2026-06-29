@@ -276,7 +276,7 @@ globle void UnboundMethodErr(void* theEnv) {
   NOTES        : Uses globals ProcParamArraySize and ProcParamArray
  ***********************************************************************/
 globle intBool IsMethodApplicable(void* theEnv, DEFMETHOD* meth) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   short i, j, k;
   RESTRICTION* rp;
 #if OBJECT_SYSTEM
@@ -455,7 +455,7 @@ globle void CallNextMethod(void* theEnv, DATA_OBJECT* result) {
                                 <generic-function> <method-index> <args>)
  **************************************************************************/
 globle void CallSpecificMethod(void* theEnv, DATA_OBJECT* result) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   DEFGENERIC* gfunc;
   int mi;
 

@@ -299,7 +299,7 @@ globle void MsgModifyInstance(void* theEnv, DATA_OBJECT* result) {
  *************************************************************/
 globle void DuplicateInstance(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT newName;
+  DATA_OBJECT newName = DATA_OBJECT_INIT;
   EXPRESSION theExp[2];
   DATA_OBJECT* overrides;
   int oldOMDMV, overrideCount, error;
@@ -377,7 +377,7 @@ globle void DuplicateInstance(void* theEnv, DATA_OBJECT* result) {
  *************************************************************/
 globle void MsgDuplicateInstance(void* theEnv, DATA_OBJECT* result) {
   INSTANCE_TYPE* ins;
-  DATA_OBJECT newName;
+  DATA_OBJECT newName = DATA_OBJECT_INIT;
   EXPRESSION theExp[2];
   DATA_OBJECT* overrides;
   int oldOMDMV, overrideCount, error;
@@ -714,7 +714,9 @@ static void DeleteSlotOverrideEvaluations(void* theEnv, DATA_OBJECT* ovEvals,
  **********************************************************/
 static void ModifyMsgHandlerSupport(void* theEnv, DATA_OBJECT* result,
                                     int msgpass) {
-  DATA_OBJECT *slotOverrides, *newval, temp, junk;
+  DATA_OBJECT *slotOverrides, *newval;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
+  DATA_OBJECT junk = DATA_OBJECT_INIT;
   EXPRESSION msgExp;
   INSTANCE_TYPE* ins;
   INSTANCE_SLOT* insSlot;
@@ -814,7 +816,9 @@ static void DuplicateMsgHandlerSupport(void* theEnv, DATA_OBJECT* result,
   long i;
   int oldMkInsMsgPass;
   INSTANCE_SLOT* dstInsSlot;
-  DATA_OBJECT temp, junk, *newval;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
+  DATA_OBJECT junk = DATA_OBJECT_INIT;
+  DATA_OBJECT* newval;
   intBool success;
 
   result->type = SYMBOL;

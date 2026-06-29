@@ -58,6 +58,9 @@
 struct constructHeader;
 struct construct;
 
+#ifndef _H_setup
+#include "setup.h"
+#endif
 #ifndef _H_moduldef
 #include "moduldef.h"
 #endif

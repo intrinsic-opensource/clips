@@ -604,7 +604,7 @@ globle int HasSuperclass(DEFCLASS* c1, DEFCLASS* c2) {
  ********************************************************************/
 globle SYMBOL_HN* CheckClassAndSlot(void* theEnv, const char* func,
                                     DEFCLASS** cls) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
 
   if (EnvArgTypeCheck(theEnv, func, 1, SYMBOL, &temp) == FALSE) return (NULL);
   *cls = LookupDefclassByMdlOrScope(theEnv, DOToString(temp));
@@ -720,7 +720,7 @@ globle void* GetClassDefaultsModeCommand(void* theEnv) {
 /*   for the set-class-defaults-mode command.      */
 /***************************************************/
 globle void* SetClassDefaultsModeCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   unsigned short oldMode;
 

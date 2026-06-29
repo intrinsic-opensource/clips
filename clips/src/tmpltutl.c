@@ -271,7 +271,7 @@ globle void PrintTemplateFact(void* theEnv, const char* logicalName,
   int i;
   struct deftemplate* theDeftemplate;
   struct templateSlot* slotPtr;
-  DATA_OBJECT tempDO;
+  DATA_OBJECT tempDO = DATA_OBJECT_INIT;
   int slotPrinted = FALSE;
 
   /*==============================*/

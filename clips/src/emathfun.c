@@ -82,91 +82,6 @@ static double genasech(double);
 static double genacsch(double);
 static double genacoth(double);
 
-/************************************************/
-/* ExtendedMathFunctionDefinitions: Initializes */
-/*   the extended math functions.               */
-/************************************************/
-globle void ExtendedMathFunctionDefinitions(void* theEnv) {
-#if !RUN_TIME
-  EnvDefineFunction2(theEnv, "cos", 'd', PTIEF CosFunction, "CosFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "sin", 'd', PTIEF SinFunction, "SinFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "tan", 'd', PTIEF TanFunction, "TanFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "sec", 'd', PTIEF SecFunction, "SecFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "csc", 'd', PTIEF CscFunction, "CscFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "cot", 'd', PTIEF CotFunction, "CotFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acos", 'd', PTIEF AcosFunction, "AcosFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "asin", 'd', PTIEF AsinFunction, "AsinFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "atan", 'd', PTIEF AtanFunction, "AtanFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "asec", 'd', PTIEF AsecFunction, "AsecFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acsc", 'd', PTIEF AcscFunction, "AcscFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acot", 'd', PTIEF AcotFunction, "AcotFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "cosh", 'd', PTIEF CoshFunction, "CoshFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "sinh", 'd', PTIEF SinhFunction, "SinhFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "tanh", 'd', PTIEF TanhFunction, "TanhFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "sech", 'd', PTIEF SechFunction, "SechFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "csch", 'd', PTIEF CschFunction, "CschFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "coth", 'd', PTIEF CothFunction, "CothFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acosh", 'd', PTIEF AcoshFunction, "AcoshFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "asinh", 'd', PTIEF AsinhFunction, "AsinhFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "atanh", 'd', PTIEF AtanhFunction, "AtanhFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "asech", 'd', PTIEF AsechFunction, "AsechFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acsch", 'd', PTIEF AcschFunction, "AcschFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "acoth", 'd', PTIEF AcothFunction, "AcothFunction",
-                     "11n");
-
-  EnvDefineFunction2(theEnv, "mod", 'n', PTIEF ModFunction, "ModFunction",
-                     "22n");
-  EnvDefineFunction2(theEnv, "exp", 'd', PTIEF ExpFunction, "ExpFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "log", 'd', PTIEF LogFunction, "LogFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "log10", 'd', PTIEF Log10Function, "Log10Function",
-                     "11n");
-  EnvDefineFunction2(theEnv, "sqrt", 'd', PTIEF SqrtFunction, "SqrtFunction",
-                     "11n");
-  EnvDefineFunction2(theEnv, "pi", 'd', PTIEF PiFunction, "PiFunction", "00");
-  EnvDefineFunction2(theEnv, "deg-rad", 'd', PTIEF DegRadFunction,
-                     "DegRadFunction", "11n");
-  EnvDefineFunction2(theEnv, "rad-deg", 'd', PTIEF RadDegFunction,
-                     "RadDegFunction", "11n");
-  EnvDefineFunction2(theEnv, "deg-grad", 'd', PTIEF DegGradFunction,
-                     "DegGradFunction", "11n");
-  EnvDefineFunction2(theEnv, "grad-deg", 'd', PTIEF GradDegFunction,
-                     "GradDegFunction", "11n");
-  EnvDefineFunction2(theEnv, "**", 'd', PTIEF PowFunction, "PowFunction",
-                     "22n");
-  EnvDefineFunction2(theEnv, "round", 'g', PTIEF RoundFunction, "RoundFunction",
-                     "11n");
-#else
-#if MAC_XCD
-#pragma unused(theEnv)
-#endif
-#endif
-}
-
 /************************************************************/
 /* SingleNumberCheck: Retrieves the numeric argument for    */
 /*   extended math functions which expect a single floating */
@@ -174,7 +89,7 @@ globle void ExtendedMathFunctionDefinitions(void* theEnv) {
 /************************************************************/
 static int SingleNumberCheck(void* theEnv, const char* functionName,
                              double* theNumber) {
-  DATA_OBJECT theValue;
+  DATA_OBJECT theValue = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, functionName, EXACTLY, 1) == -1) return (FALSE);
   if (EnvArgTypeCheck(theEnv, functionName, 1, FLOAT, &theValue) == FALSE)
@@ -651,7 +566,8 @@ globle double SqrtFunction(void* theEnv) {
 /*   for the pow function.           */
 /*************************************/
 globle double PowFunction(void* theEnv) {
-  DATA_OBJECT value1, value2;
+  DATA_OBJECT value1 = DATA_OBJECT_INIT;
+  DATA_OBJECT value2 = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "**", EXACTLY, 2) == -1) return (0.0);
 
@@ -675,7 +591,8 @@ globle double PowFunction(void* theEnv) {
 /*   for the mod function.           */
 /*************************************/
 globle void ModFunction(void* theEnv, DATA_OBJECT_PTR result) {
-  DATA_OBJECT item1, item2;
+  DATA_OBJECT item1 = DATA_OBJECT_INIT;
+  DATA_OBJECT item2 = DATA_OBJECT_INIT;
   double fnum1, fnum2;
   long long lnum1, lnum2;
 
@@ -787,7 +704,7 @@ globle double GradDegFunction(void* theEnv) {
 /*   for the round function.           */
 /***************************************/
 globle long long RoundFunction(void* theEnv) {
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
 
   if (EnvArgCountCheck(theEnv, "round", EXACTLY, 1) == -1) {
     return (0LL);
@@ -850,6 +767,91 @@ static double genacsch(double num) {
 /*******************************************/
 static double genacoth(double num) {
   return ((0.5) * log((num + 1.0) / (num - 1.0)));
+}
+
+/************************************************/
+/* ExtendedMathFunctionDefinitions: Initializes */
+/*   the extended math functions.               */
+/************************************************/
+globle void ExtendedMathFunctionDefinitions(void* theEnv) {
+#if !RUN_TIME
+  EnvDefineFunction2(theEnv, "cos", 'd', PTIEF CosFunction, "CosFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "sin", 'd', PTIEF SinFunction, "SinFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "tan", 'd', PTIEF TanFunction, "TanFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "sec", 'd', PTIEF SecFunction, "SecFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "csc", 'd', PTIEF CscFunction, "CscFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "cot", 'd', PTIEF CotFunction, "CotFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acos", 'd', PTIEF AcosFunction, "AcosFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "asin", 'd', PTIEF AsinFunction, "AsinFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "atan", 'd', PTIEF AtanFunction, "AtanFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "asec", 'd', PTIEF AsecFunction, "AsecFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acsc", 'd', PTIEF AcscFunction, "AcscFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acot", 'd', PTIEF AcotFunction, "AcotFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "cosh", 'd', PTIEF CoshFunction, "CoshFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "sinh", 'd', PTIEF SinhFunction, "SinhFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "tanh", 'd', PTIEF TanhFunction, "TanhFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "sech", 'd', PTIEF SechFunction, "SechFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "csch", 'd', PTIEF CschFunction, "CschFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "coth", 'd', PTIEF CothFunction, "CothFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acosh", 'd', PTIEF AcoshFunction, "AcoshFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "asinh", 'd', PTIEF AsinhFunction, "AsinhFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "atanh", 'd', PTIEF AtanhFunction, "AtanhFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "asech", 'd', PTIEF AsechFunction, "AsechFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acsch", 'd', PTIEF AcschFunction, "AcschFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "acoth", 'd', PTIEF AcothFunction, "AcothFunction",
+                     "11n");
+
+  EnvDefineFunction2(theEnv, "mod", 'n', PTIEF ModFunction, "ModFunction",
+                     "22n");
+  EnvDefineFunction2(theEnv, "exp", 'd', PTIEF ExpFunction, "ExpFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "log", 'd', PTIEF LogFunction, "LogFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "log10", 'd', PTIEF Log10Function, "Log10Function",
+                     "11n");
+  EnvDefineFunction2(theEnv, "sqrt", 'd', PTIEF SqrtFunction, "SqrtFunction",
+                     "11n");
+  EnvDefineFunction2(theEnv, "pi", 'd', PTIEF PiFunction, "PiFunction", "00");
+  EnvDefineFunction2(theEnv, "deg-rad", 'd', PTIEF DegRadFunction,
+                     "DegRadFunction", "11n");
+  EnvDefineFunction2(theEnv, "rad-deg", 'd', PTIEF RadDegFunction,
+                     "RadDegFunction", "11n");
+  EnvDefineFunction2(theEnv, "deg-grad", 'd', PTIEF DegGradFunction,
+                     "DegGradFunction", "11n");
+  EnvDefineFunction2(theEnv, "grad-deg", 'd', PTIEF GradDegFunction,
+                     "GradDegFunction", "11n");
+  EnvDefineFunction2(theEnv, "**", 'd', PTIEF PowFunction, "PowFunction",
+                     "22n");
+  EnvDefineFunction2(theEnv, "round", 'g', PTIEF RoundFunction, "RoundFunction",
+                     "11n");
+#else
+#if MAC_XCD
+#pragma unused(theEnv)
+#endif
+#endif
 }
 
 #endif

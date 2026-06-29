@@ -142,7 +142,7 @@ static void DeallocateEngineData(void* theEnv) {
 /*************************************************/
 globle long long EnvRun(void* theEnv, long long runLimit) {
   long long rulesFired = 0;
-  DATA_OBJECT result;
+  DATA_OBJECT result = DATA_OBJECT_INIT;
   struct callFunctionItemWithArg* theBeforeRunFunction;
   struct callFunctionItem* theRunFunction;
 #if DEBUGGING_FUNCTIONS
@@ -989,7 +989,7 @@ globle intBool EnvRemoveBeforeRunFunction(void* theEnv, const char* name) {
 globle void RunCommand(void* theEnv) {
   int numArgs;
   long long runLimit = -1LL;
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
 
   if ((numArgs = EnvArgCountCheck(theEnv, "run", NO_MORE_THAN, 1)) == -1)
     return;
@@ -1104,7 +1104,7 @@ globle intBool EnvDefruleHasBreakpoint(void* theEnv, void* theRule) {
 /*   for the set-break command.          */
 /*****************************************/
 globle void SetBreakCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   void* defrulePtr;
 
@@ -1127,7 +1127,7 @@ globle void SetBreakCommand(void* theEnv) {
 /*   for the remove-break command.          */
 /********************************************/
 globle void RemoveBreakCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   int nargs;
   void* defrulePtr;
@@ -1313,7 +1313,7 @@ globle void* EnvGetFocus(void* theEnv) {
 /*   for the focus function.          */
 /**************************************/
 globle int FocusCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   struct defmodule* theModule;
   int argCount, i;

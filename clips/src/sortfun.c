@@ -86,7 +86,7 @@ static void DeallocateSortFunctionData(void* theEnv) {
 /**************************************/
 static int DefaultCompareSwapFunction(void* theEnv, DATA_OBJECT* item1,
                                       DATA_OBJECT* item2) {
-  DATA_OBJECT returnValue;
+  DATA_OBJECT returnValue = DATA_OBJECT_INIT;
 
   SortFunctionData(theEnv)->SortComparisonFunction->argList =
       GenConstant(theEnv, item1->type, item1->value);
@@ -115,7 +115,7 @@ static int DefaultCompareSwapFunction(void* theEnv, DATA_OBJECT* item1,
 globle void SortFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   long argumentCount, i, j, k = 0;
   DATA_OBJECT *theArguments, *theArguments2;
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
   struct multifield *theMultifield, *tempMultifield;
   const char* functionName;
   struct expr* functionReference;
@@ -330,7 +330,7 @@ static void DoMergeSort(void* theEnv, DATA_OBJECT* theList,
                         unsigned long e1, unsigned long s2, unsigned long e2,
                         int (*swapFunction)(void*, DATA_OBJECT*,
                                             DATA_OBJECT*)) {
-  DATA_OBJECT temp;
+  DATA_OBJECT temp = DATA_OBJECT_INIT;
   unsigned long middle, size;
   unsigned long c1, c2, mergePoint;
 

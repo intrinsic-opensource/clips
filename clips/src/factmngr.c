@@ -661,6 +661,13 @@ static void RemoveGarbageFacts(void* theEnv) {
   while (factPtr != NULL) {
     nextPtr = factPtr->nextFact;
     if (factPtr->factHeader.busyCount == 0) {
+      struct multifield* theSegment;
+      size_t i;
+      theSegment = &factPtr->theProposition;
+      for (i = 0; i < (int)theSegment->multifieldLength; i++) {
+        AtomDeinstall(theEnv, theSegment->theFields[i].type,
+                      theSegment->theFields[i].value);
+      }
       ReturnFact(theEnv, factPtr);
       if (lastPtr == NULL)
         FactData(theEnv)->GarbageFacts = nextPtr;
@@ -1119,7 +1126,7 @@ globle intBool EnvAssignFactSlotDefaults(void* theEnv, void* vTheFact) {
   struct deftemplate* theDeftemplate;
   struct templateSlot* slotPtr;
   int i;
-  DATA_OBJECT theResult;
+  DATA_OBJECT theResult = DATA_OBJECT_INIT;
 
   /*========================================*/
   /* This function cannot be used on a fact */
@@ -1385,18 +1392,8 @@ globle void FactInstall(void* theEnv, struct fact* newFact) {
 /*   data value busy counts associated with the fact.          */
 /***************************************************************/
 globle void FactDeinstall(void* theEnv, struct fact* newFact) {
-  struct multifield* theSegment;
-  int i;
-
   FactData(theEnv)->NumberOfFacts--;
-  theSegment = &newFact->theProposition;
   newFact->whichDeftemplate->busyCount--;
-
-  for (i = 0; i < (int)theSegment->multifieldLength; i++) {
-    AtomDeinstall(theEnv, theSegment->theFields[i].type,
-                  theSegment->theFields[i].value);
-  }
-
   newFact->factHeader.busyCount--;
 }
 

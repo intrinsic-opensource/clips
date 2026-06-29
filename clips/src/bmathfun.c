@@ -102,7 +102,7 @@ globle void AdditionFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   long long ltotal = 0LL;
   intBool useFloatTotal = FALSE;
   EXPRESSION* theExpression;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=================================================*/
@@ -158,7 +158,7 @@ globle void MultiplicationFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   long long ltotal = 1LL;
   intBool useFloatTotal = FALSE;
   EXPRESSION* theExpression;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*===================================================*/
@@ -213,7 +213,7 @@ globle void SubtractionFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   long long ltotal = 0LL;
   intBool useFloatTotal = FALSE;
   EXPRESSION* theExpression;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   int pos = 1;
 
   /*=================================================*/
@@ -289,7 +289,7 @@ globle void DivisionFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
   long long ltotal = 1LL;
   intBool useFloatTotal;
   EXPRESSION* theExpression;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   int pos = 1;
 
   useFloatTotal = BasicMathFunctionData(theEnv)->AutoFloatDividend;
@@ -389,7 +389,7 @@ globle void DivisionFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 globle long long DivFunction(void* theEnv) {
   long long total = 1LL;
   EXPRESSION* theExpression;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
   int pos = 1;
   long long theNumber;
 
@@ -467,7 +467,7 @@ globle long long DivFunction(void* theEnv) {
 /*****************************************************/
 globle int SetAutoFloatDividendCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT theArgument;
+  DATA_OBJECT theArgument = DATA_OBJECT_INIT;
 
   /*===============================*/
   /* Remember the present setting. */
@@ -546,7 +546,7 @@ globle intBool EnvSetAutoFloatDividend(void* theEnv, int value) {
 /*   for the integer function.           */
 /*****************************************/
 globle long long IntegerFunction(void* theEnv) {
-  DATA_OBJECT valstruct;
+  DATA_OBJECT valstruct = DATA_OBJECT_INIT;
 
   /*============================================*/
   /* Check for the correct number of arguments. */
@@ -575,7 +575,7 @@ globle long long IntegerFunction(void* theEnv) {
 /*   for the float function.           */
 /***************************************/
 globle double FloatFunction(void* theEnv) {
-  DATA_OBJECT valstruct;
+  DATA_OBJECT valstruct = DATA_OBJECT_INIT;
 
   /*============================================*/
   /* Check for the correct number of arguments. */
@@ -645,7 +645,7 @@ globle void AbsFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the min function.           */
 /*************************************/
 globle void MinFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT argValue;
+  DATA_OBJECT argValue = DATA_OBJECT_INIT;
   int numberOfArguments, i;
 
   /*============================================*/
@@ -718,7 +718,7 @@ globle void MinFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
 /*   for the max function.           */
 /*************************************/
 globle void MaxFunction(void* theEnv, DATA_OBJECT_PTR returnValue) {
-  DATA_OBJECT argValue;
+  DATA_OBJECT argValue = DATA_OBJECT_INIT;
   int numberOfArguments, i;
 
   /*============================================*/

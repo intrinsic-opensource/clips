@@ -83,7 +83,7 @@ globle void DefglobalCommandDefinitions(void* theEnv) {
 /************************************************/
 globle int SetResetGlobalsCommand(void* theEnv) {
   int oldValue;
-  DATA_OBJECT arg_ptr;
+  DATA_OBJECT arg_ptr = DATA_OBJECT_INIT;
 
   /*===========================================*/
   /* Remember the old value of this attribute. */

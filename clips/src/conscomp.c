@@ -194,7 +194,7 @@ globle void ConstructsToCCommand(void* theEnv) {
   const char* fileName;
   char* fileNameBuffer;
   const char* pathName;
-  DATA_OBJECT theArg;
+  DATA_OBJECT theArg = DATA_OBJECT_INIT;
   int argCount;
   long long id, max;
   int nameLength, pathLength;

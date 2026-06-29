@@ -136,7 +136,7 @@ static void ResetDefglobalAction(void* theEnv,
 #pragma unused(buffer)
 #endif
   struct defglobal* theDefglobal = (struct defglobal*)theConstruct;
-  DATA_OBJECT assignValue;
+  DATA_OBJECT assignValue = DATA_OBJECT_INIT;
 
   if (EvaluateExpression(theEnv, theDefglobal->initial, &assignValue)) {
     assignValue.type = SYMBOL;

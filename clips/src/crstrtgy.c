@@ -957,7 +957,7 @@ globle void* GetStrategyCommand(void* theEnv) {
 /*   for the set-strategy command.          */
 /********************************************/
 globle void* SetStrategyCommand(void* theEnv) {
-  DATA_OBJECT argPtr;
+  DATA_OBJECT argPtr = DATA_OBJECT_INIT;
   const char* argument;
   int oldStrategy;
 
